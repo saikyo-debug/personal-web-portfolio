@@ -2,15 +2,14 @@
 
 PROFILE = {
     "name": "Emmanuel James L. Mape",
-    "role": "Software developer",
-    "tagline": "I build dependable, well-designed software for the web.",
+    "role": "Vibe-coder",
+    "tagline": "AI integration is the future.",
     "email": "emmanueljames.mape@sorsu.edu.ph",
-    "links": [("GitHub", "https://github.com/"), ("LinkedIn", "https://www.linkedin.com/")],
+    "links": [("GitHub", "https://github.com/saikyo-debug"), ("LinkedIn", "https://www.linkedin.com/")],
     "about": [
-        "I am a developer who enjoys turning unclear problems into simple, working tools. "
-        "My work centres on Python and the web, with a focus on clean structure and readable code.",
-        "Outside of coursework and projects, I like learning how real teams ship and maintain software, "
-        "and I am looking for opportunities where I can keep growing.",
+        "Hey I am Emmanuel James L. Mape, a student vibe coder who loves to build fast and flow hard."
+        "I focus on bringing ideas to life through high-level design, "
+        "creative problem-solving, and AI-assisted workflows.",
     ],
 }
 
@@ -22,8 +21,8 @@ SKILLS = {
 }
 
 PROJECTS = [
-    {"title": "Project name one", "link": "https://github.com/",
-     "summary": "One or two sentences on what it does, who it is for, and the result.",
+    {"title": "Personal Web Portfolio", "link": "https://github.com/saikyo-debug/personal-web-portfolio",
+     "summary": "a unique online personal portfolio.",
      "tags": ["Python", "Flask", "SQLite"]},
     {"title": "Project name two", "link": "https://github.com/",
      "summary": "Describe the problem you solved and your specific contribution.",
