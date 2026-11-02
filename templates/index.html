@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ p.name }} | {{ p.role }}</title>
+  <meta name="description" content="{{ p.tagline }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+{% macro timeline(entries) %}
+<ol class="tl">
+  {% for e in entries %}
+  <li class="reveal">
+    <p class="when">{{ e.period }}</p>
+    <h3>{{ e.title }}, <span>{{ e.org }}</span></h3>
+    {% if e.points %}<ul>{% for pt in e.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}
+  </li>
+  {% endfor %}
+</ol>
+{% endmacro %}
+
+<div class="layout">
+  <aside class="side">
+    <div>
+      <h1>{{ p.name }}</h1>
+      <p class="role">{{ p.role }}</p>
+      <nav class="nav" aria-label="Sections">
+        {% for id, label in nav %}<a href="#{{ id }}">{{ label }}</a>{% endfor %}
+      </nav>
+    </div>
+    <div class="links">
+      {% for label, url in p.links %}<a href="{{ url }}" target="_blank" rel="noopener">{{ label }}</a>{% endfor %}
+    </div>
+  </aside>
+
+  <main>
+    <section id="home" class="hero">
+      <p class="lead">{{ p.tagline }}</p>
+      <p class="cta"><a class="btn" href="#projects">View projects</a> <a href="#contact">Get in touch</a></p>
+    </section>
+
+    <section id="about">
+      <h2 class="reveal">About</h2>
+      {% for para in p.about %}<p class="prose reveal">{{ para }}</p>{% endfor %}
+    </section>
+
+    <section id="skills">
+      <h2 class="reveal">Skills</h2>
+      <div class="skills">
+        {% for group, names in skills.items() %}
+        <div class="reveal"><h3>{{ group }}</h3><p>{{ names | join(", ") }}</p></div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="reveal">Projects</h2>
+      {% for j in projects %}
+      <article class="proj reveal">
+        <h3>{% if j.link %}<a href="{{ j.link }}" target="_blank" rel="noopener">{{ j.title }}</a>{% else %}{{ j.title }}{% endif %}</h3>
+        <p>{{ j.summary }}</p>
+        <p class="tags">{{ j.tags | join(", ") }}</p>
+      </article>
+      {% endfor %}
+    </section>
+
+    <section id="experience">
+      <h2 class="reveal">Experience</h2>
+      {{ timeline(experience) }}
+    </section>
+
+    <section id="fieldwork">
+      <h2 class="reveal">Field work</h2>
+      {{ timeline(fieldwork) }}
+    </section>
+
+    <section id="education">
+      <h2 class="reveal">Education and certifications</h2>
+      {{ timeline(education) }}
+    </section>
+
+    <section id="contact">
+      <h2 class="reveal">Contact</h2>
+      <p class="prose reveal">Open to internships, collaborations and full-time roles.</p>
+      <p class="mail reveal"><a href="mailto:{{ p.email }}">{{ p.email }}</a></p>
+    </section>
+
+    <footer>&copy; {{ year }} {{ p.name }}</footer>
+  </main>
+</div>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

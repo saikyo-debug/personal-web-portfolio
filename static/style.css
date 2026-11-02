@@ -1,0 +1,78 @@
+:root{--paper:#F5F6F8;--ink:#172033;--body:#34405A;--slate:#5B6578;--rule:#D9DDE5;--verd:#2B6F6A;--verd-lt:#8FD0C6;
+--serif:"Newsreader",Georgia,serif;--sans:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:400 1rem/1.7 var(--sans);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+a{color:var(--verd);text-underline-offset:3px;transition:color .25s}
+a:hover{color:var(--ink)}
+:focus-visible{outline:2px solid var(--verd);outline-offset:3px}
+
+.layout{display:grid;grid-template-columns:19rem 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;background:var(--ink);color:#E8EBF1;padding:3rem 2.25rem;
+display:flex;flex-direction:column;justify-content:space-between}
+.side h1{font:500 1.75rem/1.2 var(--serif)}
+.side .role{color:#A9B2C3;margin-top:.35rem;font-size:.95rem}
+.nav{display:flex;flex-direction:column;gap:.3rem;margin-top:3rem}
+.nav a{position:relative;color:#A9B2C3;text-decoration:none;padding:.25rem 0;transition:color .3s,padding-left .35s}
+.nav a::before{content:"";position:absolute;left:0;top:50%;width:0;height:1px;background:var(--verd-lt);transition:width .35s}
+.nav a:hover{color:#fff}
+.nav a.active{color:#fff;padding-left:2.25rem}
+.nav a.active::before{width:1.5rem}
+.links{display:flex;gap:1.25rem;font-size:.9rem}
+.links a{color:#A9B2C3}
+.links a:hover{color:#fff}
+
+main{padding:5rem clamp(1.5rem,6vw,6rem) 3rem;max-width:62rem}
+main>section{margin-bottom:6.5rem}
+h2{font:500 2rem/1.2 var(--serif);margin-bottom:2rem}
+.prose{max-width:62ch;color:var(--body);margin-bottom:1rem}
+
+.hero{padding-top:4vh}
+.lead{font:400 clamp(2.3rem,5vw,3.75rem)/1.12 var(--serif);max-width:20ch;letter-spacing:-.01em}
+.cta{margin-top:2.25rem;display:flex;gap:1.75rem;align-items:center}
+.btn{background:var(--ink);color:#fff;padding:.8rem 1.4rem;border-radius:2px;text-decoration:none;transition:background .3s,transform .3s}
+.btn:hover{background:var(--verd);color:#fff;transform:translateY(-2px)}
+.hero .lead,.hero .cta{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.hero .cta{animation-delay:.18s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:2rem 3rem}
+.skills>div{border-top:1px solid var(--rule);padding-top:1rem}
+.skills h3{font:600 .95rem var(--sans);margin-bottom:.4rem}
+.skills p{color:var(--slate)}
+
+.proj{padding:1.75rem 0;border-top:1px solid var(--rule)}
+.proj:last-of-type{border-bottom:1px solid var(--rule)}
+.proj h3{font:500 1.45rem/1.3 var(--serif);transition:transform .4s,color .4s}
+.proj h3 a{color:inherit;text-decoration:none}
+.proj:hover h3{transform:translateX(6px);color:var(--verd)}
+.proj p{max-width:62ch;color:var(--body);margin-top:.4rem}
+.proj .tags{color:var(--slate);font-size:.88rem}
+
+.tl{list-style:none;padding:0;margin-left:.3rem;border-left:1px solid var(--rule)}
+.tl>li{position:relative;padding:0 0 2.5rem 2rem}
+.tl>li::before{content:"";position:absolute;left:-4px;top:.5rem;width:7px;height:7px;border-radius:50%;background:var(--verd)}
+.tl .when{color:var(--slate);font-size:.9rem}
+.tl h3{font:500 1.25rem/1.4 var(--serif)}
+.tl h3 span{color:var(--slate);font-weight:400}
+.tl ul{margin:.6rem 0 0;padding-left:1.1rem;color:var(--body)}
+
+.mail{font:400 clamp(1.5rem,3.5vw,2.25rem) var(--serif)}
+footer{color:var(--slate);font-size:.85rem;border-top:1px solid var(--rule);padding-top:1.5rem}
+
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+.layout{display:block}
+.side{position:static;height:auto;padding:1.75rem 1.5rem}
+.nav{flex-direction:row;flex-wrap:wrap;gap:.2rem 1.25rem;margin:1.25rem 0}
+.nav a.active{padding-left:0;text-decoration:underline;text-underline-offset:6px}
+.nav a::before{display:none}
+main{padding-top:3rem}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*,*::before{animation:none!important;transition:none!important}
+.js .reveal{opacity:1;transform:none}
+}
